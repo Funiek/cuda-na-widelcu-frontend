@@ -45,6 +45,7 @@ namespace CudaNaWidelcuFrontend.Controllers
 
             var recipes = recipesResponse.@return.Where(e => e.category.Equals(category)).ToList();
 
+            
             return View(recipes);
         }
 
