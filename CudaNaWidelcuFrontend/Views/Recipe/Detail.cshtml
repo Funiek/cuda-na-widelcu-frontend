@@ -4,6 +4,18 @@
     ViewData["Title"] = "Detail";
 }
 
+<link rel="stylesheet" href="~/css/stars.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+
+<script src="~/js/stars.js" defer></script>
+<script src="~/js/pdf.js" defer></script>
+
+<script>
+    let RecipeId = @Model.id
+    let RecipeName = '@Model.name'
+</script>
+
 <h1>Detail</h1>
 
 <div>
@@ -14,17 +26,17 @@
     <img src="~/img/@photoName" alt="@Model.name"/>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.category)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.category)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.countVotes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.countVotes)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.description)
@@ -33,26 +45,54 @@
             @Html.DisplayFor(model => model.description)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.name)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.rating)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.rating)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.countVotes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.countVotes)
+        </dd>
     </dl>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+
+<div class="wrapper">
+    <p id="message">Oceń przepis</p>
+    <div class="container vertical-center">
+        <div class="star-container inactive">
+            <i class="fa-regular fa-star"></i>
+            <span class="number">1</span>
+        </div>
+        <div class="star-container inactive">
+            <i class="fa-regular fa-star"></i>
+            <span class="number">2</span>
+        </div>
+        <div class="star-container inactive">
+            <i class="fa-regular fa-star"></i>
+            <span class="number">3</span>
+        </div>
+        <div class="star-container inactive">
+            <i class="fa-regular fa-star"></i>
+            <span class="number">4</span>
+        </div>
+        <div class="star-container inactive">
+            <i class="fa-regular fa-star"></i>
+            <span class="number">5</span>
+        </div>
+    </div>
+    <button id="submit" disabled>Wyślij</button>
+    <div id="submit-section" class="hide">
+        <p id="submit-message">Dziękujemy za ocenę!</p>
+    </div>
 </div>
+
+<div class="nice-button" style="float:left; margin-right: 16px;">
+    <a style="text-decoration:none; color: #ffffff" asp-action="Index">Powrót</a>
+</div>
+<button id="pdfButton" style="width: 186px; float:left;" class="nice-button">Pobierz PDF</button>
+
+<div style="clear:both"></div>
+

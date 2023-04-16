@@ -1,7 +1,9 @@
 ﻿using CudaNaWidelcuFrontend.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RecipeReference;
-using ServiceReference1;
+using FileReference;
+using System.Collections;
 using System.Diagnostics;
 using System.IO;
 
@@ -11,14 +13,14 @@ namespace CudaNaWidelcuFrontend.Controllers
     {
         private readonly ILogger<RecipeController> _logger;
         private readonly RecipeServiceClient _recipeService;
-        private readonly ImageServiceClient _imageService;
+        private readonly FileServiceClient _fileService;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         public RecipeController(ILogger<RecipeController> logger, IWebHostEnvironment webHostEnvironment)
         {
             _logger = logger;
             _recipeService = new RecipeServiceClient();
-            _imageService = new ImageServiceClient();
+            _fileService = new FileServiceClient();
             _webHostEnvironment = webHostEnvironment;
         }
 
@@ -33,8 +35,6 @@ namespace CudaNaWidelcuFrontend.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Index(int id)
         {
-            var recipesResponse = await _recipeService.getRecipesAsync();
-
             var category = id switch
             {
                 1 => Category.BREAKFAST,
@@ -43,8 +43,8 @@ namespace CudaNaWidelcuFrontend.Controllers
                 _ => Category.BREAKFAST
             };
 
-            var recipes = recipesResponse.@return.Where(e => e.category.Equals(category)).ToList();
-
+            var recipesResponse = await _recipeService.getRecipesByCategoryAsync(category);
+            var recipes = recipesResponse.@return;
             
             return View(recipes);
         }
@@ -57,8 +57,8 @@ namespace CudaNaWidelcuFrontend.Controllers
             
             if (recipe.image is null && recipe.name is not null && !System.IO.File.Exists(path))
             {
-                var imageInBytesResponse = await _imageService.downloadImageAsync(recipe.name + ".jpeg");
-                recipe.image = imageInBytesResponse.Body.@return;
+                var imageInBytesResponse = await _fileService.downloadImageAsync(recipe.name);
+                recipe.image = imageInBytesResponse.@return;
 
                 using (var ms = new MemoryStream(recipe.image))
                 {
@@ -72,10 +72,32 @@ namespace CudaNaWidelcuFrontend.Controllers
             return View(recipe);
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public void Rating(RatingData data)
         {
-            return View();
+            _recipeService.rateRecipeAsync(data.RecipeId, data.Rating);
         }
+
+        [HttpPost]
+        public async Task Pdf(RecipeNameData data)
+        {
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "pdf", data.Name + ".pdf");
+
+            if (!System.IO.File.Exists(path))
+            {
+                var pdfResponse = await _fileService.downloadRecipeProductsPdfAsync(data.Name);
+                var pdfInBytes = pdfResponse.@return;
+
+                using (var ms = new MemoryStream(pdfInBytes))
+                {
+                    using (var fs = new FileStream(path, FileMode.Create))
+                    {
+                        ms.WriteTo(fs);
+                    }
+                }
+            }
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

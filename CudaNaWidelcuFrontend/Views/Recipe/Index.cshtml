@@ -1,25 +1,17 @@
 ﻿@model IEnumerable<RecipeReference.Recipe>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cuda na Widelcu";
 }
 
 <h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if(Model is not null)
+{
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.countVotes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.id)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.name)
@@ -37,23 +29,16 @@
                 @Html.DisplayFor(modelItem => item.category)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.countVotes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.rating)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Detail", new {  id=item.id  }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Details", "Detail", new {  id=item.id  })
             </td>
         </tr>
 }
     </tbody>
 </table>
+}
