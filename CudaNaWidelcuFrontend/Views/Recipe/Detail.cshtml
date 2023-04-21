@@ -56,6 +56,15 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.countVotes)
         </dd>
+        <ol>
+            @foreach(var product in Model.products)
+            {
+                <li>
+                    @Html.Raw($"{product.name}\t{product.qty}\t{product.measure}");
+                </li>
+            }
+        </ol>
+       
     </dl>
 </div>
 

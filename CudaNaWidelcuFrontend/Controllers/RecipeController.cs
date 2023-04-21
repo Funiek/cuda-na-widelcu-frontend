@@ -1,11 +1,12 @@
 ﻿using CudaNaWidelcuFrontend.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using RecipeReference;
 using FileReference;
+using RecipeReference;
 using System.Collections;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace CudaNaWidelcuFrontend.Controllers
 {
@@ -85,7 +86,19 @@ namespace CudaNaWidelcuFrontend.Controllers
 
             if (!System.IO.File.Exists(path))
             {
-                var pdfResponse = await _fileService.downloadRecipeProductsPdfAsync(data.Name);
+                var recipeResponse = await _recipeService.getRecipeByNameAsync(data.Name);
+                var recipe = recipeResponse.@return;
+
+                StringBuilder stringBuilder = new StringBuilder();
+
+                foreach(var product in recipe.products)
+                {
+                    stringBuilder.Append($"{product.name}: {product.qty} {product.measure};");
+                }
+
+                stringBuilder.Remove(stringBuilder.Length - 1, 1);
+
+                var pdfResponse = await _fileService.downloadRecipeProductsPdfAsync(recipe.name, stringBuilder.ToString());
                 var pdfInBytes = pdfResponse.@return;
 
                 using (var ms = new MemoryStream(pdfInBytes))

@@ -1,7 +1,7 @@
 {
   "ExtendedData": {
     "inputs": [
-      "http://localhost:8080/cuda-na-widelcu-backend/FileService?wsdl"
+      "https://localhost:8181/cuda-na-widelcu-backend/FileService?wsdl"
     ],
     "collectionTypes": [
       "System.Array",

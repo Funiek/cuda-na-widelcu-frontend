@@ -1,7 +1,7 @@
 {
   "ExtendedData": {
     "inputs": [
-      "http://localhost:8080/cuda-na-widelcu-backend/RecipeService?wsdl"
+      "https://localhost:8181/cuda-na-widelcu-backend/RecipeService?wsdl"
     ],
     "collectionTypes": [
       "System.Array",

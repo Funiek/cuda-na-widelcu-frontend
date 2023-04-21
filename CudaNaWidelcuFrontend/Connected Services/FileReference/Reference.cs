@@ -104,13 +104,18 @@ namespace FileReference
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string recipeName;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string products;
+        
         public downloadRecipeProductsPdfRequest()
         {
         }
         
-        public downloadRecipeProductsPdfRequest(string recipeName)
+        public downloadRecipeProductsPdfRequest(string recipeName, string products)
         {
             this.recipeName = recipeName;
+            this.products = products;
         }
     }
     
@@ -204,10 +209,11 @@ namespace FileReference
             return base.Channel.downloadRecipeProductsPdfAsync(request);
         }
         
-        public System.Threading.Tasks.Task<FileReference.downloadRecipeProductsPdfResponse> downloadRecipeProductsPdfAsync(string recipeName)
+        public System.Threading.Tasks.Task<FileReference.downloadRecipeProductsPdfResponse> downloadRecipeProductsPdfAsync(string recipeName, string products)
         {
             FileReference.downloadRecipeProductsPdfRequest inValue = new FileReference.downloadRecipeProductsPdfRequest();
             inValue.recipeName = recipeName;
+            inValue.products = products;
             return ((FileReference.FileService)(this)).downloadRecipeProductsPdfAsync(inValue);
         }
         
@@ -225,6 +231,7 @@ namespace FileReference
                 result.ReaderQuotas = System.Xml.XmlDictionaryReaderQuotas.Max;
                 result.MaxReceivedMessageSize = int.MaxValue;
                 result.AllowCookies = true;
+                result.Security.Mode = System.ServiceModel.BasicHttpSecurityMode.Transport;
                 return result;
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
@@ -234,7 +241,7 @@ namespace FileReference
         {
             if ((endpointConfiguration == EndpointConfiguration.FileServiceImplPort))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:8080/cuda-na-widelcu-backend/FileService");
+                return new System.ServiceModel.EndpointAddress("https://localhost:8181/cuda-na-widelcu-backend/FileService");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
