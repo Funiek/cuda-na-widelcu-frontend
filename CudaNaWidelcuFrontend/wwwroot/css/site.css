@@ -27,6 +27,7 @@ body {
 
 .detail-desc {
     padding-top: 10px;
+    margin-bottom: 24px;
 }
 
 .navbar-color {
@@ -40,4 +41,13 @@ body {
 
 .navbar-item-text:hover {
     color: #eee !important;
+}
+
+.index-detail-btn {
+    color: grey;
+    text-decoration: none;
+}
+
+.index-detail-btn:hover {
+    color: dimgrey;
 }

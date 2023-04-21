@@ -16,6 +16,18 @@ namespace CudaNaWidelcuFrontend.Controllers
         private readonly RecipeServiceClient _recipeService;
         private readonly FileServiceClient _fileService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly Dictionary<Category, string> _categoryNames;
+
+        public class RecipeModelView
+        {
+            public int Id { get; set; }
+            public string? Name { get; set; }
+            public string? Category { get; set; }
+            public double Rating { get; set; }
+            public string? Description { get; set; }
+            public double CountVotes { get; set; }
+            public Product[]? Products { get; set; }
+        }
 
         public RecipeController(ILogger<RecipeController> logger, IWebHostEnvironment webHostEnvironment)
         {
@@ -23,14 +35,33 @@ namespace CudaNaWidelcuFrontend.Controllers
             _recipeService = new RecipeServiceClient();
             _fileService = new FileServiceClient();
             _webHostEnvironment = webHostEnvironment;
+            _categoryNames = new Dictionary<Category, string>
+            {
+                { Category.BREAKFAST, "Śniadanie" },
+                { Category.LUNCH, "Obiad" },
+                { Category.DINNER, "Kolacja" }
+            };
         }
 
         public async Task<IActionResult> Index()
         {
             var recipesResponse = await _recipeService.getRecipesAsync();
             var recipes = recipesResponse.@return;
+            var modelViews = new List<RecipeModelView>();
 
-            return View(recipes);
+            foreach (var recipe in recipes)
+            {
+                modelViews.Add(new RecipeModelView
+                {
+                    Id = recipe.id, 
+                    Name = recipe.name,
+                    Category = _categoryNames[recipe.category],
+                    Rating = recipe.rating,
+
+                });
+            }
+
+            return View(modelViews);
         }
 
         [HttpGet("{id}")]
@@ -46,8 +77,23 @@ namespace CudaNaWidelcuFrontend.Controllers
 
             var recipesResponse = await _recipeService.getRecipesByCategoryAsync(category);
             var recipes = recipesResponse.@return;
-            
-            return View(recipes);
+            var modelViews = new List<RecipeModelView>();
+
+            foreach (var recipe in recipes)
+            {
+                modelViews.Add(new RecipeModelView
+                {
+                    Id = recipe.id,
+                    Name = recipe.name,
+                    Category = _categoryNames[recipe.category],
+                    Rating = recipe.rating,
+                    CountVotes = recipe.countVotes,
+                    Description = recipe.description,
+                    Products = recipe.products
+                });
+            }
+
+            return View(modelViews);
         }
 
         public async Task<IActionResult> Detail(int id)
@@ -70,7 +116,18 @@ namespace CudaNaWidelcuFrontend.Controllers
                 }
             }
 
-            return View(recipe);
+            var modelView = new RecipeModelView
+            {
+                Id = recipe.id,
+                Name = recipe.name,
+                Category = _categoryNames[recipe.category],
+                Rating = recipe.rating,
+                CountVotes = recipe.countVotes,
+                Description = recipe.description,
+                Products = recipe.products
+            };
+
+            return View(modelView);
         }
 
         [HttpPost]

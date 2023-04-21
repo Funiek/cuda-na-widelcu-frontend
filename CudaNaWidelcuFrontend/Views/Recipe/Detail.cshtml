@@ -1,4 +1,4 @@
-﻿@model RecipeReference.Recipe
+﻿@model CudaNaWidelcuFrontend.Controllers.RecipeController.RecipeModelView
 
 @{
     ViewData["Title"] = "Detail";
@@ -12,20 +12,20 @@
 <script src="~/js/pdf.js" defer></script>
 
 <script>
-    let RecipeId = @Model.id
-    let RecipeName = '@Model.name'
+    let RecipeId = @Model.Id
+    let RecipeName = '@Model.Name'
 </script>
 
 <div>
-    <h4>Strona produktu - @Model.name</h4>
+    <h4>Strona produktu - @Model.Name</h4>
     @{
-        var photoName = Model.name + ".jpeg";
+        var photoName = Model.Name + ".jpeg";
     }
     
     <hr />
     <div class="row">
         <div class="col-sm-7">
-            <img class="detail-img" src="~/img/@photoName" alt="@Model.name" />
+            <img class="detail-img" src="~/img/@photoName" alt="@Model.Name" />
         </div>
         <div class="col-sm-5 detail-props">
             <dl class="row">
@@ -33,36 +33,39 @@
                     Nazwa przepisu:
                 </dt>
                 <dd class="col-sm-8">
-                    @Html.DisplayFor(model => model.name)
+                    @Html.DisplayFor(model => model.Name)
                 </dd>
                 <dt class="col-sm-4">
                     Kategoria:
                 </dt>
                 <dd class="col-sm-8">
-                    @Html.DisplayFor(model => model.category)
+                    @Html.DisplayFor(model => model.Category)
                 </dd>
                 <dt class="col-sm-4">
                     Ocena przepisu:
                 </dt>
                 <dd class="col-sm-8">
-                    @Html.DisplayFor(model => model.rating)
+                    @Html.DisplayFor(model => model.Rating)
                 </dd>
                 <dt class="col-sm-4">
                     Liczba ocen:
                 </dt>
                 <dd class="col-sm-8">
-                    @Html.DisplayFor(model => model.countVotes)
+                    @Html.DisplayFor(model => model.CountVotes)
                 </dd>
             </dl>
-            <h5>Lista produktów</h5>
-            <ol>
-                @foreach (var product in Model.products)
-                {
-                    <li>
-                        @Html.Raw($"{product.name}\t{product.qty}\t{product.measure}")
+            @if (Model.Products is not null)
+            {
+                <h5>Lista produktów</h5>
+                <ol>
+                    @foreach (var product in Model.Products)
+                    {
+                        <li>
+                            @Html.Raw($"{product.name}\t{product.qty}\t{product.measure}")
                     </li>
                 }
-            </ol>
+                </ol>
+            }
         </div>
     </div>
     
@@ -73,7 +76,7 @@
     <h4>Opis produktu</h4>
     <hr />
     <div class="col-sm-12">
-        @Html.DisplayFor(model => model.description)
+        @Html.DisplayFor(model => model.Description)
     </div>
 </div>
 
