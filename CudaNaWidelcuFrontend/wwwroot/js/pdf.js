@@ -7,15 +7,17 @@ pdfButton.addEventListener("click", () => {
             Name: RecipeName,
         },
         function (data, status) {
-            console.log("cos poszlo " + status);
+            setTimeout(
+                function () {
+                    let link = document.createElement("a");
+                    link.download = RecipeName + ".pdf";
+                    link.href = 'https://localhost:7236/pdf/' + RecipeName + ".pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    delete link;
+                }, 1000);
+            
         }
     );
-
-    let link = document.createElement("a");
-    link.download = RecipeName + ".pdf";
-    link.href = 'https://localhost:7236/pdf/' + RecipeName + ".pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    delete link;
 });

@@ -16,3 +16,28 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.detail-img {
+    width: 100%;
+}
+
+.detail-props {
+    border-left: 3px dashed #000;
+}
+
+.detail-desc {
+    padding-top: 10px;
+}
+
+.navbar-color {
+    background: linear-gradient(#fe3b5a, #fd7914);
+    color: #fff;
+}
+
+.navbar-item-text {
+    color: #fff !important;
+}
+
+.navbar-item-text:hover {
+    color: #eee !important;
+}

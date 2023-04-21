@@ -16,8 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Client\" />
-    <Folder Include="Server\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\pdf\" />
   </ItemGroup>

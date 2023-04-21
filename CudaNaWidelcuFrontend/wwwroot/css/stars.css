@@ -14,7 +14,8 @@
 
 .wrapper {
     font-size: 1.2em;
-    width: 25em;
+    width: 20em;
+    margin: 0 auto;
     background-color: #ffffff;
     border-radius: 0.5em;
     padding: 2em 2em;
@@ -45,7 +46,7 @@
     border: none;
     padding: 0.8em 2em;
     color: #ffffff;
-    font-size: 1.2em;
+    font-size: 0.8em;
     border-radius: 2em;
     margin: 1em auto 0 auto;
     cursor: pointer;
