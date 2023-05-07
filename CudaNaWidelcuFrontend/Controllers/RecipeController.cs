@@ -3,6 +3,7 @@ using FileReference;
 using Microsoft.AspNetCore.Mvc;
 using RecipeReference;
 using System.Diagnostics;
+using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 
@@ -181,3 +182,22 @@ namespace CudaNaWidelcuFrontend.Controllers
         }
     }
 }
+
+/*var client = new HelloWorldClient();
+
+var macAddressHeader = MessageHeader.CreateHeader(
+    "macAddress",
+    "http://localhost:8080/websoap/HelloWorldImpl",
+    "KLIENT", false, "http://schemas.xmlsoap.org/soap/actor/next");
+
+
+// Ustawiamy nagłówek w kontekście klienta
+using (var scope = new OperationContextScope(client.InnerChannel))
+{
+    OperationContext.Current.OutgoingMessageHeaders.Add(macAddressHeader);
+
+    // Pobieramy produkty
+    var items = client.getProductsAsync().Result.@return;
+
+    Console.WriteLine(items.Length.ToString());
+}*/
