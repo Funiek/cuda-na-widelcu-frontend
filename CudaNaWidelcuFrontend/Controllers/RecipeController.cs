@@ -1,11 +1,9 @@
 ﻿using CudaNaWidelcuFrontend.Models;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Mvc;
 using FileReference;
+using Microsoft.AspNetCore.Mvc;
 using RecipeReference;
-using System.Collections;
 using System.Diagnostics;
-using System.IO;
+using System.ServiceModel.Channels;
 using System.Text;
 
 namespace CudaNaWidelcuFrontend.Controllers
@@ -17,6 +15,7 @@ namespace CudaNaWidelcuFrontend.Controllers
         private readonly FileServiceClient _fileService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly Dictionary<Category, string> _categoryNames;
+        private readonly MessageHeader _macAddressHeader;
 
         public class RecipeModelView
         {
@@ -41,6 +40,12 @@ namespace CudaNaWidelcuFrontend.Controllers
                 { Category.LUNCH, "Obiad" },
                 { Category.DINNER, "Kolacja" }
             };
+
+            _macAddressHeader = MessageHeader.CreateHeader(
+                                    "macAddress",
+                                    "http://localhost:8080/websoap/HelloWorldImpl",
+                                    "KLIENT", false, "http://schemas.xmlsoap.org/soap/actor/next"
+                                    );
         }
 
         public async Task<IActionResult> Index()
@@ -53,7 +58,7 @@ namespace CudaNaWidelcuFrontend.Controllers
             {
                 modelViews.Add(new RecipeModelView
                 {
-                    Id = recipe.id, 
+                    Id = recipe.id,
                     Name = recipe.name,
                     Category = _categoryNames[recipe.category],
                     Rating = recipe.rating,
@@ -101,7 +106,7 @@ namespace CudaNaWidelcuFrontend.Controllers
             var recipeResponse = await _recipeService.getRecipeAsync(id);
             var recipe = recipeResponse.@return;
             var path = Path.Combine(_webHostEnvironment.WebRootPath, "img", recipe.name + ".jpeg");
-            
+
             if (recipe.image is null && recipe.name is not null && !System.IO.File.Exists(path))
             {
                 var imageInBytesResponse = await _fileService.downloadImageAsync(recipe.name);
@@ -148,7 +153,7 @@ namespace CudaNaWidelcuFrontend.Controllers
 
                 StringBuilder stringBuilder = new StringBuilder();
 
-                foreach(var product in recipe.products)
+                foreach (var product in recipe.products)
                 {
                     stringBuilder.Append($"{product.name}: {product.qty} {product.measure};");
                 }

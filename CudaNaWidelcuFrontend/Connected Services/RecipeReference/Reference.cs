@@ -16,98 +16,87 @@ namespace RecipeReference
     public interface RecipeService
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/deleteRecipeByNameRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/deleteRecipeByNameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/rateRecipeRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/rateRecipeResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<RecipeReference.deleteRecipeByNameResponse> deleteRecipeByNameAsync(RecipeReference.deleteRecipeByNameRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesByCategoryRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesByCategoryResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<RecipeReference.getRecipesByCategoryResponse> getRecipesByCategoryAsync(RecipeReference.getRecipesByCategoryRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesToStringRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesToStringResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<RecipeReference.getRecipesToStringResponse> getRecipesToStringAsync(RecipeReference.getRecipesToStringRequest request);
+        System.Threading.Tasks.Task<RecipeReference.rateRecipeResponse> rateRecipeAsync(RecipeReference.rateRecipeRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<RecipeReference.getRecipesResponse> getRecipesAsync(RecipeReference.getRecipesRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/getRecipeRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/getRecipeResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<RecipeReference.getRecipeResponse> getRecipeAsync(RecipeReference.getRecipeRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/modifyRecipeRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/modifyRecipeResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<RecipeReference.modifyRecipeResponse> modifyRecipeAsync(RecipeReference.modifyRecipeRequest request);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/rateRecipeByNameRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/rateRecipeByNameResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<RecipeReference.rateRecipeByNameResponse> rateRecipeByNameAsync(RecipeReference.rateRecipeByNameRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/getRecipeByNameRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/getRecipeByNameResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<RecipeReference.getRecipeByNameResponse> getRecipeByNameAsync(RecipeReference.getRecipeByNameRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/addRecipeRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/addRecipeResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<RecipeReference.addRecipeResponse> addRecipeAsync(RecipeReference.addRecipeRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/getRecipeByNameRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/getRecipeByNameResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RecipeReference.getRecipeByNameResponse> getRecipeByNameAsync(RecipeReference.getRecipeByNameRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/deleteRecipeRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/deleteRecipeResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Threading.Tasks.Task<RecipeReference.deleteRecipeResponse> deleteRecipeAsync(RecipeReference.deleteRecipeRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/rateRecipeRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/rateRecipeResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/modifyRecipeRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/modifyRecipeResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<RecipeReference.rateRecipeResponse> rateRecipeAsync(RecipeReference.rateRecipeRequest request);
+        System.Threading.Tasks.Task<RecipeReference.modifyRecipeResponse> modifyRecipeAsync(RecipeReference.modifyRecipeRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/getRecipeRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/getRecipeResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RecipeReference.getRecipeResponse> getRecipeAsync(RecipeReference.getRecipeRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesToStringRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesToStringResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RecipeReference.getRecipesToStringResponse> getRecipesToStringAsync(RecipeReference.getRecipesToStringRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesByCategoryRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/getRecipesByCategoryResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RecipeReference.getRecipesByCategoryResponse> getRecipesByCategoryAsync(RecipeReference.getRecipesByCategoryRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://cudanawidelcu.ds360.pl/RecipeService/deleteRecipeByNameRequest", ReplyAction="http://cudanawidelcu.ds360.pl/RecipeService/deleteRecipeByNameResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<RecipeReference.deleteRecipeByNameResponse> deleteRecipeByNameAsync(RecipeReference.deleteRecipeByNameRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteRecipeByName", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class deleteRecipeByNameRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rateRecipe", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class rateRecipeRequest
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string name;
+        public int id;
         
-        public deleteRecipeByNameRequest()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int vote;
+        
+        public rateRecipeRequest()
         {
         }
         
-        public deleteRecipeByNameRequest(string name)
+        public rateRecipeRequest(int id, int vote)
         {
-            this.name = name;
+            this.id = id;
+            this.vote = vote;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteRecipeByNameResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class deleteRecipeByNameResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="rateRecipeResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class rateRecipeResponse
     {
         
-        public deleteRecipeByNameResponse()
+        public rateRecipeResponse()
         {
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://cudanawidelcu.ds360.pl/")]
-    public enum Category
-    {
-        
-        /// <remarks/>
-        BREAKFAST,
-        
-        /// <remarks/>
-        LUNCH,
-        
-        /// <remarks/>
-        DINNER,
     }
     
     /// <remarks/>
@@ -312,6 +301,22 @@ namespace RecipeReference
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://cudanawidelcu.ds360.pl/")]
+    public enum Category
+    {
+        
+        /// <remarks/>
+        BREAKFAST,
+        
+        /// <remarks/>
+        LUNCH,
+        
+        /// <remarks/>
+        DINNER,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://cudanawidelcu.ds360.pl/")]
     public partial class Product
@@ -401,81 +406,6 @@ namespace RecipeReference
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipesByCategory", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class getRecipesByCategoryRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public RecipeReference.Category category;
-        
-        public getRecipesByCategoryRequest()
-        {
-        }
-        
-        public getRecipesByCategoryRequest(RecipeReference.Category category)
-        {
-            this.category = category;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipesByCategoryResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class getRecipesByCategoryResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public RecipeReference.Recipe[] @return;
-        
-        public getRecipesByCategoryResponse()
-        {
-        }
-        
-        public getRecipesByCategoryResponse(RecipeReference.Recipe[] @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipesToString", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class getRecipesToStringRequest
-    {
-        
-        public getRecipesToStringRequest()
-        {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipesToStringResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class getRecipesToStringResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string @return;
-        
-        public getRecipesToStringResponse()
-        {
-        }
-        
-        public getRecipesToStringResponse(string @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipes", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
     public partial class getRecipesRequest
     {
@@ -503,81 +433,6 @@ namespace RecipeReference
         public getRecipesResponse(RecipeReference.Recipe[] @return)
         {
             this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipe", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class getRecipeRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int id;
-        
-        public getRecipeRequest()
-        {
-        }
-        
-        public getRecipeRequest(int id)
-        {
-            this.id = id;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipeResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class getRecipeResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public RecipeReference.Recipe @return;
-        
-        public getRecipeResponse()
-        {
-        }
-        
-        public getRecipeResponse(RecipeReference.Recipe @return)
-        {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modifyRecipe", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class modifyRecipeRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public RecipeReference.Recipe recipe;
-        
-        public modifyRecipeRequest()
-        {
-        }
-        
-        public modifyRecipeRequest(RecipeReference.Recipe recipe)
-        {
-            this.recipe = recipe;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="modifyRecipeResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class modifyRecipeResponse
-    {
-        
-        public modifyRecipeResponse()
-        {
         }
     }
     
@@ -615,6 +470,39 @@ namespace RecipeReference
     {
         
         public rateRecipeByNameResponse()
+        {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="addRecipe", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class addRecipeRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public RecipeReference.Recipe recipe;
+        
+        public addRecipeRequest()
+        {
+        }
+        
+        public addRecipeRequest(RecipeReference.Recipe recipe)
+        {
+            this.recipe = recipe;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="addRecipeResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class addRecipeResponse
+    {
+        
+        public addRecipeResponse()
         {
         }
     }
@@ -664,39 +552,6 @@ namespace RecipeReference
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="addRecipe", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class addRecipeRequest
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public RecipeReference.Recipe recipe;
-        
-        public addRecipeRequest()
-        {
-        }
-        
-        public addRecipeRequest(RecipeReference.Recipe recipe)
-        {
-            this.recipe = recipe;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="addRecipeResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class addRecipeResponse
-    {
-        
-        public addRecipeResponse()
-        {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="deleteRecipe", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
     public partial class deleteRecipeRequest
     {
@@ -730,37 +585,182 @@ namespace RecipeReference
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="rateRecipe", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class rateRecipeRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modifyRecipe", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class modifyRecipeRequest
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int id;
+        public RecipeReference.Recipe recipe;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int vote;
-        
-        public rateRecipeRequest()
+        public modifyRecipeRequest()
         {
         }
         
-        public rateRecipeRequest(int id, int vote)
+        public modifyRecipeRequest(RecipeReference.Recipe recipe)
         {
-            this.id = id;
-            this.vote = vote;
+            this.recipe = recipe;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="rateRecipeResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
-    public partial class rateRecipeResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="modifyRecipeResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class modifyRecipeResponse
     {
         
-        public rateRecipeResponse()
+        public modifyRecipeResponse()
+        {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipe", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class getRecipeRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int id;
+        
+        public getRecipeRequest()
+        {
+        }
+        
+        public getRecipeRequest(int id)
+        {
+            this.id = id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipeResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class getRecipeResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public RecipeReference.Recipe @return;
+        
+        public getRecipeResponse()
+        {
+        }
+        
+        public getRecipeResponse(RecipeReference.Recipe @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipesToString", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class getRecipesToStringRequest
+    {
+        
+        public getRecipesToStringRequest()
+        {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipesToStringResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class getRecipesToStringResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
+        
+        public getRecipesToStringResponse()
+        {
+        }
+        
+        public getRecipesToStringResponse(string @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipesByCategory", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class getRecipesByCategoryRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public RecipeReference.Category category;
+        
+        public getRecipesByCategoryRequest()
+        {
+        }
+        
+        public getRecipesByCategoryRequest(RecipeReference.Category category)
+        {
+            this.category = category;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getRecipesByCategoryResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class getRecipesByCategoryResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public RecipeReference.Recipe[] @return;
+        
+        public getRecipesByCategoryResponse()
+        {
+        }
+        
+        public getRecipesByCategoryResponse(RecipeReference.Recipe[] @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteRecipeByName", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class deleteRecipeByNameRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://cudanawidelcu.ds360.pl/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string name;
+        
+        public deleteRecipeByNameRequest()
+        {
+        }
+        
+        public deleteRecipeByNameRequest(string name)
+        {
+            this.name = name;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="deleteRecipeByNameResponse", WrapperNamespace="http://cudanawidelcu.ds360.pl/", IsWrapped=true)]
+    public partial class deleteRecipeByNameResponse
+    {
+        
+        public deleteRecipeByNameResponse()
         {
         }
     }
@@ -816,41 +816,17 @@ namespace RecipeReference
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RecipeReference.deleteRecipeByNameResponse> RecipeReference.RecipeService.deleteRecipeByNameAsync(RecipeReference.deleteRecipeByNameRequest request)
+        System.Threading.Tasks.Task<RecipeReference.rateRecipeResponse> RecipeReference.RecipeService.rateRecipeAsync(RecipeReference.rateRecipeRequest request)
         {
-            return base.Channel.deleteRecipeByNameAsync(request);
+            return base.Channel.rateRecipeAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RecipeReference.deleteRecipeByNameResponse> deleteRecipeByNameAsync(string name)
+        public System.Threading.Tasks.Task<RecipeReference.rateRecipeResponse> rateRecipeAsync(int id, int vote)
         {
-            RecipeReference.deleteRecipeByNameRequest inValue = new RecipeReference.deleteRecipeByNameRequest();
-            inValue.name = name;
-            return ((RecipeReference.RecipeService)(this)).deleteRecipeByNameAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RecipeReference.getRecipesByCategoryResponse> RecipeReference.RecipeService.getRecipesByCategoryAsync(RecipeReference.getRecipesByCategoryRequest request)
-        {
-            return base.Channel.getRecipesByCategoryAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<RecipeReference.getRecipesByCategoryResponse> getRecipesByCategoryAsync(RecipeReference.Category category)
-        {
-            RecipeReference.getRecipesByCategoryRequest inValue = new RecipeReference.getRecipesByCategoryRequest();
-            inValue.category = category;
-            return ((RecipeReference.RecipeService)(this)).getRecipesByCategoryAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RecipeReference.getRecipesToStringResponse> RecipeReference.RecipeService.getRecipesToStringAsync(RecipeReference.getRecipesToStringRequest request)
-        {
-            return base.Channel.getRecipesToStringAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<RecipeReference.getRecipesToStringResponse> getRecipesToStringAsync()
-        {
-            RecipeReference.getRecipesToStringRequest inValue = new RecipeReference.getRecipesToStringRequest();
-            return ((RecipeReference.RecipeService)(this)).getRecipesToStringAsync(inValue);
+            RecipeReference.rateRecipeRequest inValue = new RecipeReference.rateRecipeRequest();
+            inValue.id = id;
+            inValue.vote = vote;
+            return ((RecipeReference.RecipeService)(this)).rateRecipeAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -863,32 +839,6 @@ namespace RecipeReference
         {
             RecipeReference.getRecipesRequest inValue = new RecipeReference.getRecipesRequest();
             return ((RecipeReference.RecipeService)(this)).getRecipesAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RecipeReference.getRecipeResponse> RecipeReference.RecipeService.getRecipeAsync(RecipeReference.getRecipeRequest request)
-        {
-            return base.Channel.getRecipeAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<RecipeReference.getRecipeResponse> getRecipeAsync(int id)
-        {
-            RecipeReference.getRecipeRequest inValue = new RecipeReference.getRecipeRequest();
-            inValue.id = id;
-            return ((RecipeReference.RecipeService)(this)).getRecipeAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RecipeReference.modifyRecipeResponse> RecipeReference.RecipeService.modifyRecipeAsync(RecipeReference.modifyRecipeRequest request)
-        {
-            return base.Channel.modifyRecipeAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<RecipeReference.modifyRecipeResponse> modifyRecipeAsync(RecipeReference.Recipe recipe)
-        {
-            RecipeReference.modifyRecipeRequest inValue = new RecipeReference.modifyRecipeRequest();
-            inValue.recipe = recipe;
-            return ((RecipeReference.RecipeService)(this)).modifyRecipeAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -906,19 +856,6 @@ namespace RecipeReference
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RecipeReference.getRecipeByNameResponse> RecipeReference.RecipeService.getRecipeByNameAsync(RecipeReference.getRecipeByNameRequest request)
-        {
-            return base.Channel.getRecipeByNameAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<RecipeReference.getRecipeByNameResponse> getRecipeByNameAsync(string name)
-        {
-            RecipeReference.getRecipeByNameRequest inValue = new RecipeReference.getRecipeByNameRequest();
-            inValue.name = name;
-            return ((RecipeReference.RecipeService)(this)).getRecipeByNameAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.Threading.Tasks.Task<RecipeReference.addRecipeResponse> RecipeReference.RecipeService.addRecipeAsync(RecipeReference.addRecipeRequest request)
         {
             return base.Channel.addRecipeAsync(request);
@@ -929,6 +866,19 @@ namespace RecipeReference
             RecipeReference.addRecipeRequest inValue = new RecipeReference.addRecipeRequest();
             inValue.recipe = recipe;
             return ((RecipeReference.RecipeService)(this)).addRecipeAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RecipeReference.getRecipeByNameResponse> RecipeReference.RecipeService.getRecipeByNameAsync(RecipeReference.getRecipeByNameRequest request)
+        {
+            return base.Channel.getRecipeByNameAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RecipeReference.getRecipeByNameResponse> getRecipeByNameAsync(string name)
+        {
+            RecipeReference.getRecipeByNameRequest inValue = new RecipeReference.getRecipeByNameRequest();
+            inValue.name = name;
+            return ((RecipeReference.RecipeService)(this)).getRecipeByNameAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -945,17 +895,67 @@ namespace RecipeReference
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<RecipeReference.rateRecipeResponse> RecipeReference.RecipeService.rateRecipeAsync(RecipeReference.rateRecipeRequest request)
+        System.Threading.Tasks.Task<RecipeReference.modifyRecipeResponse> RecipeReference.RecipeService.modifyRecipeAsync(RecipeReference.modifyRecipeRequest request)
         {
-            return base.Channel.rateRecipeAsync(request);
+            return base.Channel.modifyRecipeAsync(request);
         }
         
-        public System.Threading.Tasks.Task<RecipeReference.rateRecipeResponse> rateRecipeAsync(int id, int vote)
+        public System.Threading.Tasks.Task<RecipeReference.modifyRecipeResponse> modifyRecipeAsync(RecipeReference.Recipe recipe)
         {
-            RecipeReference.rateRecipeRequest inValue = new RecipeReference.rateRecipeRequest();
+            RecipeReference.modifyRecipeRequest inValue = new RecipeReference.modifyRecipeRequest();
+            inValue.recipe = recipe;
+            return ((RecipeReference.RecipeService)(this)).modifyRecipeAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RecipeReference.getRecipeResponse> RecipeReference.RecipeService.getRecipeAsync(RecipeReference.getRecipeRequest request)
+        {
+            return base.Channel.getRecipeAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RecipeReference.getRecipeResponse> getRecipeAsync(int id)
+        {
+            RecipeReference.getRecipeRequest inValue = new RecipeReference.getRecipeRequest();
             inValue.id = id;
-            inValue.vote = vote;
-            return ((RecipeReference.RecipeService)(this)).rateRecipeAsync(inValue);
+            return ((RecipeReference.RecipeService)(this)).getRecipeAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RecipeReference.getRecipesToStringResponse> RecipeReference.RecipeService.getRecipesToStringAsync(RecipeReference.getRecipesToStringRequest request)
+        {
+            return base.Channel.getRecipesToStringAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RecipeReference.getRecipesToStringResponse> getRecipesToStringAsync()
+        {
+            RecipeReference.getRecipesToStringRequest inValue = new RecipeReference.getRecipesToStringRequest();
+            return ((RecipeReference.RecipeService)(this)).getRecipesToStringAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RecipeReference.getRecipesByCategoryResponse> RecipeReference.RecipeService.getRecipesByCategoryAsync(RecipeReference.getRecipesByCategoryRequest request)
+        {
+            return base.Channel.getRecipesByCategoryAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RecipeReference.getRecipesByCategoryResponse> getRecipesByCategoryAsync(RecipeReference.Category category)
+        {
+            RecipeReference.getRecipesByCategoryRequest inValue = new RecipeReference.getRecipesByCategoryRequest();
+            inValue.category = category;
+            return ((RecipeReference.RecipeService)(this)).getRecipesByCategoryAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<RecipeReference.deleteRecipeByNameResponse> RecipeReference.RecipeService.deleteRecipeByNameAsync(RecipeReference.deleteRecipeByNameRequest request)
+        {
+            return base.Channel.deleteRecipeByNameAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<RecipeReference.deleteRecipeByNameResponse> deleteRecipeByNameAsync(string name)
+        {
+            RecipeReference.deleteRecipeByNameRequest inValue = new RecipeReference.deleteRecipeByNameRequest();
+            inValue.name = name;
+            return ((RecipeReference.RecipeService)(this)).deleteRecipeByNameAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
