@@ -16,7 +16,7 @@ namespace CudaNaWidelcuFrontend.Controllers
         private readonly FileServiceClient _fileService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly Dictionary<Category, string> _categoryNames;
-        private readonly MessageHeader _macAddressHeader;
+        private readonly MessageHeader _authHeader;
 
         public class RecipeModelView
         {
@@ -42,8 +42,8 @@ namespace CudaNaWidelcuFrontend.Controllers
                 { Category.DINNER, "Kolacja" }
             };
 
-            _macAddressHeader = MessageHeader.CreateHeader(
-                                    "macAddress",
+            _authHeader = MessageHeader.CreateHeader(
+                                    "authAddress",
                                     "http://localhost:8080/websoap/HelloWorldImpl",
                                     "KLIENT", false, "http://schemas.xmlsoap.org/soap/actor/next"
                                     );
@@ -51,8 +51,14 @@ namespace CudaNaWidelcuFrontend.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var recipesResponse = await _recipeService.getRecipesAsync();
-            var recipes = recipesResponse.@return;
+            Recipe[] recipes;
+            using (var scope = new OperationContextScope(_recipeService.InnerChannel))
+            {
+                OperationContext.Current.OutgoingMessageHeaders.Add(_authHeader);
+                var recipesResponse = await _recipeService.getRecipesAsync();
+                recipes = recipesResponse.@return;
+            }
+            
             var modelViews = new List<RecipeModelView>();
 
             foreach (var recipe in recipes)
@@ -81,8 +87,15 @@ namespace CudaNaWidelcuFrontend.Controllers
                 _ => Category.BREAKFAST
             };
 
-            var recipesResponse = await _recipeService.getRecipesByCategoryAsync(category);
-            var recipes = recipesResponse.@return;
+            Recipe[] recipes;
+            using (var scope = new OperationContextScope(_recipeService.InnerChannel))
+            {
+                OperationContext.Current.OutgoingMessageHeaders.Add(_authHeader);
+                var recipesResponse = await _recipeService.getRecipesByCategoryAsync(category);
+                recipes = recipesResponse.@return;
+            }
+                
+            
             var modelViews = new List<RecipeModelView>();
 
             foreach (var recipe in recipes)
@@ -104,14 +117,24 @@ namespace CudaNaWidelcuFrontend.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            var recipeResponse = await _recipeService.getRecipeAsync(id);
-            var recipe = recipeResponse.@return;
+            Recipe recipe;
+            using (var scope = new OperationContextScope(_recipeService.InnerChannel))
+            {
+                OperationContext.Current.OutgoingMessageHeaders.Add(_authHeader);
+                var recipeResponse = await _recipeService.getRecipeAsync(id);
+                recipe = recipeResponse.@return;
+            }
+
             var path = Path.Combine(_webHostEnvironment.WebRootPath, "img", recipe.name + ".jpeg");
 
             if (recipe.image is null && recipe.name is not null && !System.IO.File.Exists(path))
             {
-                var imageInBytesResponse = await _fileService.downloadImageAsync(recipe.name);
-                recipe.image = imageInBytesResponse.@return;
+                using (var scope = new OperationContextScope(_fileService.InnerChannel))
+                {
+                    OperationContext.Current.OutgoingMessageHeaders.Add(_authHeader);
+                    var imageInBytesResponse = await _fileService.downloadImageAsync(recipe.name);
+                    recipe.image = imageInBytesResponse.@return;
+                }
 
                 using (var ms = new MemoryStream(recipe.image))
                 {
@@ -139,7 +162,11 @@ namespace CudaNaWidelcuFrontend.Controllers
         [HttpPost]
         public void Rating(RatingData data)
         {
-            _recipeService.rateRecipeAsync(data.RecipeId, data.Rating);
+            using (var scope = new OperationContextScope(_recipeService.InnerChannel))
+            {
+                OperationContext.Current.OutgoingMessageHeaders.Add(_authHeader);
+                _recipeService.rateRecipeAsync(data.RecipeId, data.Rating);
+            }
         }
 
         [HttpPost]
@@ -149,20 +176,31 @@ namespace CudaNaWidelcuFrontend.Controllers
 
             if (!System.IO.File.Exists(path))
             {
-                var recipeResponse = await _recipeService.getRecipeByNameAsync(data.Name);
-                var recipe = recipeResponse.@return;
+                byte[] pdfInBytes;
+                Recipe recipe;
 
-                StringBuilder stringBuilder = new StringBuilder();
-
-                foreach (var product in recipe.products)
+                using (var scope = new OperationContextScope(_recipeService.InnerChannel))
                 {
-                    stringBuilder.Append($"{product.name}: {product.qty} {product.measure};");
+                    OperationContext.Current.OutgoingMessageHeaders.Add(_authHeader);
+                    var recipeResponse = await _recipeService.getRecipeByNameAsync(data.Name);
+                    recipe = recipeResponse.@return;
                 }
 
-                stringBuilder.Remove(stringBuilder.Length - 1, 1);
+                    StringBuilder stringBuilder = new StringBuilder();
 
-                var pdfResponse = await _fileService.downloadRecipeProductsPdfAsync(recipe.name, stringBuilder.ToString());
-                var pdfInBytes = pdfResponse.@return;
+                    foreach (var product in recipe.products)
+                    {
+                        stringBuilder.Append($"{product.name}: {product.qty} {product.measure};");
+                    }
+
+                    stringBuilder.Remove(stringBuilder.Length - 1, 1);
+
+                using (var scope = new OperationContextScope(_fileService.InnerChannel))
+                {
+                    var pdfResponse = await _fileService.downloadRecipeProductsPdfAsync(recipe.name, stringBuilder.ToString());
+                    pdfInBytes = pdfResponse.@return;
+
+                }
 
                 using (var ms = new MemoryStream(pdfInBytes))
                 {
@@ -182,22 +220,3 @@ namespace CudaNaWidelcuFrontend.Controllers
         }
     }
 }
-
-/*var client = new HelloWorldClient();
-
-var macAddressHeader = MessageHeader.CreateHeader(
-    "macAddress",
-    "http://localhost:8080/websoap/HelloWorldImpl",
-    "KLIENT", false, "http://schemas.xmlsoap.org/soap/actor/next");
-
-
-// Ustawiamy nagłówek w kontekście klienta
-using (var scope = new OperationContextScope(client.InnerChannel))
-{
-    OperationContext.Current.OutgoingMessageHeaders.Add(macAddressHeader);
-
-    // Pobieramy produkty
-    var items = client.getProductsAsync().Result.@return;
-
-    Console.WriteLine(items.Length.ToString());
-}*/
