@@ -45,7 +45,7 @@ namespace CudaNaWidelcuFrontend.Controllers
             _authHeader = MessageHeader.CreateHeader(
                                     "authAddress",
                                     "http://localhost:8080/websoap/HelloWorldImpl",
-                                    "KLIENT", false, "http://schemas.xmlsoap.org/soap/actor/next"
+                                    "f0f8270db484173c2e0e52cb7fb0c8a53c2483c9cbb46bc0b88bead6c082cbf8", false, "http://schemas.xmlsoap.org/soap/actor/next"
                                     );
         }
 
